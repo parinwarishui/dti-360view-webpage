@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Panorama Viewers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Baskervville' rel='stylesheet'>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        body {
+            font-family: 'Baskervville', serif;
+            margin: 10px;
+        }
+        h1 {
+            font-size: 45px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 25px;
+        }
+        .viewer {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1920px;
+            height: 500px;
+        }
+
+        .viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #756205;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body style="background-color:#fdf3be">
+
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+        <div>
+            <h1><b>AURAPLANE</b></h1>
+            <p>COMMUNAL DINING, UNDISTURBED.</p>
+        </div>
+    
+        <!-- Buttons to switch -->
+        <div>
+            <button onclick="showViewer(1)">1) Walking Around</button>
+            <button onclick="showViewer(2)">2) Queueing for Food</button>
+            <button onclick="showViewer(3)">3) Discussing at Table</button>
+        </div>
+    </div>
+
+    <!-- Separate viewers -->
+    <div class="viewer" id="viewer1">
+        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/LwzZ9Re.jpg"></iframe>
+    </div>
+
+    <div class="viewer" id="viewer2">
+            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/B9gAOCm.jpg"></iframe>
+    </div>
+
+    <div class="viewer" id="viewer3">
+            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/cpmpweD.jpg"></iframe>
+    </div>
+
+    <script>
+        function showViewer(viewerNumber) {
+            document.getElementById('viewer1').style.display = 'none';
+            document.getElementById('viewer2').style.display = 'none';
+            document.getElementById('viewer3').style.display = 'none';
+            
+            document.getElementById('viewer' + viewerNumber).style.display = 'block';
+        }
+
+        showViewer(1);
+    </script>
+
+</body>
+</html>
