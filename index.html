@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiple Panorama Viewers</title>
+    <title>AURAPLANE - 360 View</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <link href='https://fonts.googleapis.com/css?family=Baskervville' rel='stylesheet'>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
@@ -52,28 +52,33 @@
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
         <div>
             <h1><b>AURAPLANE</b></h1>
-            <p>COMMUNAL DINING, UNDISTURBED.</p>
+            <p>COMMUNAL DINING. UNDISTURBED.</p>
         </div>
     
         <!-- Buttons to switch -->
         <div>
             <button onclick="showViewer(1)">1) Walking Around</button>
             <button onclick="showViewer(2)">2) Queueing for Food</button>
-            <button onclick="showViewer(3)">3) Discussing at Table</button>
+            <button onclick="showViewer(3)">3) Dining with Privacy</button>
+            <button onclick="showViewer(4)">4) Discussing at Table</button>
         </div>
     </div>
 
     <!-- Separate viewers -->
     <div class="viewer" id="viewer1">
-        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/LwzZ9Re.jpg"></iframe>
+        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/LwzZ9Re.jpg"></iframe>
     </div>
 
     <div class="viewer" id="viewer2">
-            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/B9gAOCm.jpg"></iframe>
+            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/B9gAOCm.jpg"></iframe>
     </div>
 
     <div class="viewer" id="viewer3">
-            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A//i.imgur.com/cpmpweD.jpg"></iframe>
+            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/cpmpweD.jpg"></iframe>
+    </div>
+
+    <div class="viewer" id="viewer4">
+        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/GT7NAK7.jpg"></iframe>
     </div>
 
     <script>
@@ -81,6 +86,7 @@
             document.getElementById('viewer1').style.display = 'none';
             document.getElementById('viewer2').style.display = 'none';
             document.getElementById('viewer3').style.display = 'none';
+            document.getElementById('viewer4').style.display = 'none';
             
             document.getElementById('viewer' + viewerNumber).style.display = 'block';
         }
