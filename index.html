@@ -21,20 +21,11 @@
         }
         .viewer {
             display: none;
-            justify-content: center;
-            align-items: center;
             margin: 20px auto;
             width: 100%;
             max-width: 1920px;
             height: 500px;
         }
-
-        .viewer iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
         button {
             margin: 10px;
             padding: 10px;
@@ -54,8 +45,7 @@
             <h1><b>AURAPLANE</b></h1>
             <p>COMMUNAL DINING. UNDISTURBED.</p>
         </div>
-    
-        <!-- Buttons to switch -->
+
         <div>
             <button onclick="showViewer(1)">1) Walking Around</button>
             <button onclick="showViewer(2)">2) Queueing for Food</button>
@@ -64,31 +54,70 @@
         </div>
     </div>
 
-    <!-- Separate viewers -->
-    <div class="viewer" id="viewer1">
-        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/LwzZ9Re.jpg"></iframe>
-    </div>
-
-    <div class="viewer" id="viewer2">
-            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/B9gAOCm.jpg"></iframe>
-    </div>
-
-    <div class="viewer" id="viewer3">
-            <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/cpmpweD.jpg"></iframe>
-    </div>
-
-    <div class="viewer" id="viewer4">
-        <iframe src="https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https://i.imgur.com/GT7NAK7.jpg"></iframe>
-    </div>
+    <div class="viewer" id="viewer1"></div>
+    <div class="viewer" id="viewer2"></div>
+    <div class="viewer" id="viewer3"></div>
+    <div class="viewer" id="viewer4"></div>
 
     <script>
+        const viewers = {};
+
+        const scenes = {
+            1: {
+                url: 'https://i.imgur.com/clDQ3a0.jpg',
+                minPitch: -40,
+                maxPitch: 20,
+                minYaw: -160,
+                maxYaw: 160
+            },
+            2: {
+                url: 'https://i.imgur.com/wJuLTGc.jpg',
+                minPitch: -30,
+                maxPitch: 30,
+                minYaw: -100,
+                maxYaw: 100
+            },
+            3: {
+                url: 'https://i.imgur.com/weJdUsi.jpg',
+                minPitch: -50,
+                maxPitch: 50,
+                minYaw: -100,
+                maxYaw: 100
+            },
+            4: {
+                url: 'https://i.imgur.com/CKzczUm.jpg',
+                minPitch: -50,
+                maxPitch: 50,
+                minYaw: -100,
+                maxYaw: 100
+            }
+        };
+
+        function createViewer(id, scene) {
+            return pannellum.viewer(id, {
+                type: "equirectangular",
+                panorama: scene.url,
+                autoLoad: true,
+                pitch: 0,
+                yaw: 0,
+                hfov: 100,
+                minPitch: scene.minPitch,
+                maxPitch: scene.maxPitch,
+                minYaw: scene.minYaw,
+                maxYaw: scene.maxYaw,
+                minHfov: 50,
+                maxHfov: 120
+            });
+        }
+
         function showViewer(viewerNumber) {
-            document.getElementById('viewer1').style.display = 'none';
-            document.getElementById('viewer2').style.display = 'none';
-            document.getElementById('viewer3').style.display = 'none';
-            document.getElementById('viewer4').style.display = 'none';
-            
-            document.getElementById('viewer' + viewerNumber).style.display = 'block';
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById('viewer' + i);
+                el.style.display = (i === viewerNumber) ? 'block' : 'none';
+                if (i === viewerNumber && !viewers[i]) {
+                    viewers[i] = createViewer('viewer' + i, scenes[i]);
+                }
+            }
         }
 
         showViewer(1);
