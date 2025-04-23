@@ -48,9 +48,8 @@
 
         <div>
             <button onclick="showViewer(1)">1) Walking Around</button>
-            <button onclick="showViewer(2)">2) Queueing for Food</button>
-            <button onclick="showViewer(3)">3) Dining with Privacy</button>
-            <button onclick="showViewer(4)">4) Discussing at Table</button>
+            <button onclick="showViewer(2)">2) Dining with Privacy</button>
+            <button onclick="showViewer(3)">3) Discussing at Table</button>
         </div>
     </div>
 
@@ -67,27 +66,20 @@
                 url: 'https://i.imgur.com/clDQ3a0.jpg',
                 minPitch: -40,
                 maxPitch: 20,
-                minYaw: -160,
-                maxYaw: 160
+                minYaw: -135,
+                maxYaw: 80
             },
             2: {
-                url: 'https://i.imgur.com/wJuLTGc.jpg',
-                minPitch: -30,
-                maxPitch: 30,
+                url: 'https://i.imgur.com/weJdUsi.jpg',
+                minPitch: -50,
+                maxPitch: 20,
                 minYaw: -100,
                 maxYaw: 100
             },
             3: {
-                url: 'https://i.imgur.com/weJdUsi.jpg',
-                minPitch: -50,
-                maxPitch: 50,
-                minYaw: -100,
-                maxYaw: 100
-            },
-            4: {
                 url: 'https://i.imgur.com/CKzczUm.jpg',
                 minPitch: -50,
-                maxPitch: 50,
+                maxPitch: 20,
                 minYaw: -100,
                 maxYaw: 100
             }
@@ -111,7 +103,7 @@
         }
 
         function showViewer(viewerNumber) {
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 3; i++) {
                 const el = document.getElementById('viewer' + i);
                 el.style.display = (i === viewerNumber) ? 'block' : 'none';
                 if (i === viewerNumber && !viewers[i]) {
